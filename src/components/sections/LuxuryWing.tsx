@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { DeckSection } from "@/components/deck/DeckSection";
 import { mall } from "@/lib/data/mall-of-america";
@@ -52,9 +53,19 @@ export function LuxuryWing() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="aspect-[4/3] flex items-center justify-center bg-[var(--color-paper)]"
+              className="group relative aspect-[4/3] overflow-hidden bg-[var(--color-paper)]"
             >
-              <div className="font-display text-xl md:text-2xl tracking-wide text-[var(--color-ink)]">
+              {tenant.image && (
+                <Image
+                  src={tenant.image}
+                  alt={tenant.name}
+                  fill
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/75 via-[var(--color-ink)]/15 to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 font-display text-xl md:text-2xl tracking-wide text-[var(--color-paper)]">
                 {tenant.name}
               </div>
             </motion.div>

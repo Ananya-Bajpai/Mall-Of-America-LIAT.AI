@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { DeckSection } from "@/components/deck/DeckSection";
 import { StatCounter } from "@/components/ui/StatCounter";
@@ -37,6 +38,27 @@ export function WhyThisProperty() {
             ))}
           </div>
         </div>
+
+        {/* Feature visual — region/location */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-24 relative overflow-hidden border border-[var(--color-line)] aspect-[16/7]"
+        >
+          <Image
+            src="/images/why.png"
+            alt="Regional reach — Mall of America at the center of the Upper Midwest"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink)]/80 via-[var(--color-ink)]/20 to-[var(--color-ink)]/60" />
+          <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 font-mono text-[11px] tracking-[0.25em] uppercase text-[var(--color-paper)]/80">
+            Bloomington · MN · 44° 51′ N
+          </div>
+        </motion.div>
 
         {/* Demographics strip */}
         <div className="mt-24 border-t border-[var(--color-line)] pt-10">

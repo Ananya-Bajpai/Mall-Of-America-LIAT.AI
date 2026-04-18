@@ -23,12 +23,14 @@ export type Stat = {
 export type Tenant = {
   name: string;
   category: "flagship" | "luxury" | "lifestyle" | "experiential" | "dining";
+  image?: string;
 };
 
 export type Attraction = {
   name: string;
   description: string;
   stat?: string;
+  image?: string;
 };
 
 export type Venue = {
@@ -92,10 +94,10 @@ export const mall = {
     { name: "Microsoft", category: "flagship" },
     { name: "Zara", category: "flagship" },
     { name: "Sephora", category: "flagship" },
-    { name: "Louis Vuitton", category: "luxury" },
-    { name: "Burberry", category: "luxury" },
-    { name: "Tiffany & Co.", category: "luxury" },
-    { name: "Coach", category: "luxury" },
+    { name: "Louis Vuitton", category: "luxury", image: "/images/luxury/louis-vuitton.png" },
+    { name: "Burberry", category: "luxury", image: "/images/luxury/burberry.png" },
+    { name: "Tiffany & Co.", category: "luxury", image: "/images/luxury/tiffany.png" },
+    { name: "Coach", category: "luxury", image: "/images/luxury/coach.png" },
     { name: "lululemon", category: "lifestyle" },
     { name: "Aritzia", category: "lifestyle" },
   ] satisfies Tenant[],
@@ -106,34 +108,40 @@ export const mall = {
       description:
         "The nation's largest indoor theme park — 27 rides, 7 acres, all under one roof.",
       stat: "27 rides · 7 acres",
+      image: "/images/attractions/nickelodeon.png",
     },
     {
       name: "SEA LIFE Minnesota Aquarium",
       description:
         "A 1.2-million-gallon underwater journey with 10,000+ marine creatures.",
       stat: "10,000+ species",
+      image: "/images/attractions/sealife.png",
     },
     {
       name: "FlyOver America",
       description:
         "Cinematic flight-ride experience across America's most iconic landscapes.",
       stat: "6-story screen",
+      image: "/images/attractions/flyover.png",
     },
     {
       name: "Crayola Experience",
       description:
         "A 60,000 sq ft creative playground — the only one in the Upper Midwest.",
       stat: "60,000 sq ft",
+      image: "/images/attractions/crayola.png",
     },
     {
       name: "The Escape Game",
       description:
         "Immersive, story-driven group adventures drawing both locals and tourists.",
+      image: "/images/attractions/escape-game.png",
     },
     {
       name: "Mirror Maze & Smash Dance",
       description:
         "High-energy interactive venues built for content, groups, and dwell time.",
+      image: "/images/attractions/mirror-maze.png",
     },
   ] satisfies Attraction[],
 

@@ -9,6 +9,7 @@ export function EventsPlatform() {
   return (
     <DeckSection id="events" tone="ink" fullBleed className="py-24 md:py-32">
       <VideoBackground
+        src="/videos/events.mp4"
         overlayClassName="bg-gradient-to-b from-[var(--color-ink)]/95 via-[var(--color-ink)]/80 to-[var(--color-ink)]/95"
       />
 

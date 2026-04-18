@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { DeckSection } from "@/components/deck/DeckSection";
 import { mall } from "@/lib/data/mall-of-america";
@@ -25,7 +26,25 @@ export function DiningLifestyle() {
           </p>
         </div>
 
-        <div className="mt-20 grid md:grid-cols-2 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
+        {/* Dining hero banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 relative overflow-hidden border border-[var(--color-line)] aspect-[21/9]"
+        >
+          <Image
+            src="/images/dining-hero.png"
+            alt="Dining at Mall of America"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink)]/75 via-[var(--color-ink)]/20 to-[var(--color-ink)]/40" />
+        </motion.div>
+
+        <div className="mt-16 grid md:grid-cols-2 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">
           {mall.dining.highlights.map((highlight, i) => {
             const [name, ...rest] = highlight.split(" — ");
             return (

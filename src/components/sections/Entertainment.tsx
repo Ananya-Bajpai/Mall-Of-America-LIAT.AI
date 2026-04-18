@@ -1,12 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { DeckSection } from "@/components/deck/DeckSection";
+import { VideoBackground } from "@/components/ui/VideoBackground";
 import { mall } from "@/lib/data/mall-of-america";
 
 export function Entertainment() {
   return (
-    <DeckSection id="entertainment" tone="ink">
+    <DeckSection id="entertainment" tone="ink" fullBleed className="py-24 md:py-32">
+      <VideoBackground
+        src="/videos/entertainment.mp4"
+        overlayClassName="bg-gradient-to-b from-[var(--color-ink)]/92 via-[var(--color-ink)]/88 to-[var(--color-ink)]/96"
+      />
       <div className="relative z-10 w-full max-w-[var(--max-content)] mx-auto px-[var(--gutter)]">
         <div className="max-w-4xl">
           <div className="eyebrow mb-6">The Differentiator</div>
@@ -32,15 +38,20 @@ export function Entertainment() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors"
+              className="group relative overflow-hidden border border-[var(--color-line)] hover:border-[var(--color-accent)] transition-colors bg-[var(--color-ink)]"
             >
-              {/* Placeholder gradient — swap with AI-generated or real imagery */}
-              <div
-                className="aspect-[16/10] w-full"
-                style={{
-                  background: `linear-gradient(${135 + i * 20}deg, rgba(201,169,106,${0.15 + (i % 3) * 0.1}) 0%, rgba(19,19,21,1) 60%), radial-gradient(at ${20 + i * 10}% ${30 + i * 5}%, rgba(214,69,69,0.2), transparent 50%)`,
-                }}
-              />
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                {attraction.image && (
+                  <Image
+                    src={attraction.image}
+                    alt={attraction.name}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/60 via-transparent to-transparent" />
+              </div>
               <div className="p-8">
                 <div className="flex items-start justify-between gap-6">
                   <h3 className="font-display text-2xl md:text-3xl text-[var(--color-paper)] group-hover:text-[var(--color-accent)] transition-colors">

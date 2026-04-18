@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { DeckSection } from "@/components/deck/DeckSection";
 import { mall } from "@/lib/data/mall-of-america";
@@ -23,6 +24,32 @@ export function RetailShowcase() {
             most engaged shopping audience.
           </p>
         </div>
+
+        {/* Flagship banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 relative overflow-hidden border border-[var(--color-line)] aspect-[21/9]"
+        >
+          <Image
+            src="/images/retail-flagship.png"
+            alt="Flagship retail at Mall of America"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/85 via-[var(--color-ink)]/20 to-transparent" />
+          <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 max-w-md">
+            <div className="font-mono text-[11px] tracking-[0.25em] uppercase text-[var(--color-accent)] mb-2">
+              Flagship Anchors
+            </div>
+            <div className="font-display text-2xl md:text-3xl text-[var(--color-paper)] leading-tight">
+              Apple. Nike. LEGO. The brands tenants benchmark against.
+            </div>
+          </div>
+        </motion.div>
 
         {/* Category breakdown */}
         <div className="mt-20 grid md:grid-cols-4 gap-px bg-[var(--color-line)] border border-[var(--color-line)]">

@@ -12,7 +12,7 @@ export function HeroOpening() {
   return (
     <DeckSection id="hero" fullBleed className="min-h-screen flex items-end">
       <VideoBackground
-        /* TODO: swap with real MP4 once asset is exported */
+        src="/videos/hero.mp4"
         overlayClassName="bg-gradient-to-b from-[var(--color-ink)]/20 via-transparent to-[var(--color-ink)]/95"
       />
 
