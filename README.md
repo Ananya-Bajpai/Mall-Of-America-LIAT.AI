@@ -6,8 +6,8 @@ A cinematic, browser-based sales experience for Mall of America, built for leasi
 
 ## Live Demo
 
-🔗 _Deployed URL goes here after Vercel setup_
-🔗 GitHub: _repo URL goes here_
+🔗 **Live:** https://mall-of-america-deck-one.vercel.app
+🔗 **GitHub:** https://github.com/Ananya-Bajpai/Mall-Of-America-LIAT.AI
 
 ## Stack
 
