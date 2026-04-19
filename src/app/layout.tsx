@@ -15,15 +15,52 @@ const display = Fraunces({
   axes: ["SOFT", "WONK", "opsz"],
 });
 
+const SITE_URL = "https://mall-of-america-deck-one.vercel.app";
+const TITLE = "Mall of America — A Destination Unlike Any Other";
+const DESCRIPTION =
+  "An interactive sales experience for Mall of America — 5.6M sq ft, 40M+ annual visitors, 520+ stores, and a world-class entertainment platform. Built for leasing, sponsorship, and event-booking conversations.";
+
 export const metadata: Metadata = {
-  title: "Mall of America — A Destination Unlike Any Other",
-  description:
-    "An interactive sales experience for Mall of America: 5.6M sq ft, 40M+ annual visitors, 500+ stores, and a world-class entertainment platform.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: "Mall of America Sales Deck",
+  authors: [{ name: "Ananya Bajpai" }],
+  keywords: [
+    "Mall of America",
+    "sales deck",
+    "leasing",
+    "sponsorship",
+    "events",
+    "retail",
+    "Bloomington",
+    "Minnesota",
+  ],
   openGraph: {
-    title: "Mall of America — A Destination Unlike Any Other",
-    description:
-      "Interactive sales deck for tenants, sponsors, and event partners.",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Mall of America Sales Deck",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mall of America — interactive sales deck",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
