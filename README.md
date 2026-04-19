@@ -96,12 +96,14 @@ All AI-generated assets are supplementary to public materials from Mall of Ameri
 
 ## Performance
 
-Targets (verified via Chrome Lighthouse on deployed build):
+Measured via PageSpeed Insights on the production deploy:
 
-- **Performance** — 90+
-- **Accessibility** — 95+
-- **Best Practices** — 100
-- **SEO** — 100
+| Category | Desktop | Mobile |
+| --- | --- | --- |
+| Performance | **99** | **91** |
+| Accessibility | **100** | **100** |
+| Best Practices | **100** | **100** |
+| SEO | **100** | **100** |
 
 Key techniques:
 
