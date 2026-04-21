@@ -9,6 +9,18 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 type Props = { slide: TenantWallSlideData };
 
+/** Brand → domain for Clearbit logo CDN. Keep in sync with flagshipTenants. */
+const BRAND_DOMAINS: Record<string, string> = {
+  Apple: "apple.com",
+  Nike: "nike.com",
+  LEGO: "lego.com",
+  Uniqlo: "uniqlo.com",
+  Zara: "zara.com",
+  Sephora: "sephora.com",
+  lululemon: "lululemon.com",
+  Aritzia: "aritzia.com",
+};
+
 export function TenantWallSlide({ slide }: Props) {
   const variant = slide.variant ?? "chips";
 
@@ -46,13 +58,10 @@ export function TenantWallSlide({ slide }: Props) {
 }
 
 function LogoWall({ items }: { items: string[] }) {
-  // 2×4 desktop / 2×4 tablet / 2 col mobile — dense brand board.
   const cols =
     items.length <= 6
       ? "grid-cols-2 md:grid-cols-3"
-      : items.length <= 8
-        ? "grid-cols-2 md:grid-cols-4"
-        : "grid-cols-2 md:grid-cols-4 lg:grid-cols-5";
+      : "grid-cols-2 md:grid-cols-4";
 
   return (
     <div
@@ -67,20 +76,40 @@ function LogoWall({ items }: { items: string[] }) {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease, delay: 0.3 + i * 0.05 }}
-          className="group relative flex aspect-[5/3] items-center justify-center overflow-hidden bg-[var(--color-ink)] transition-colors duration-500 hover:bg-[var(--color-ink-soft)]"
+          className="group relative flex h-[clamp(118px,15vh,170px)] items-center justify-center overflow-hidden bg-[var(--color-ink)] transition-colors duration-500 hover:bg-[var(--color-ink-soft)]"
         >
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-accent)_0%,transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-[0.08]"
           />
-          <span
-            className="relative font-display font-light tracking-tight text-[var(--color-paper)] transition-colors duration-500 group-hover:text-[var(--color-accent)]"
-            style={{ fontSize: "clamp(1.4rem, 2.4vw, 2.15rem)" }}
-          >
-            {item}
-          </span>
+          <LogoTile name={item} />
         </motion.div>
       ))}
+    </div>
+  );
+}
+
+function LogoTile({ name }: { name: string }) {
+  const domain = BRAND_DOMAINS[name];
+  return (
+    <div className="relative flex flex-col items-center justify-center gap-3 px-3">
+      {domain ? (
+        <div className="flex h-[clamp(38px,6vh,52px)] w-[clamp(90px,12vw,130px)] items-center justify-center rounded bg-white px-3 py-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`https://logo.clearbit.com/${domain}`}
+            alt={`${name} logo`}
+            loading="lazy"
+            className="max-h-full max-w-full object-contain"
+            onError={(e) => {
+              e.currentTarget.parentElement?.classList.add("hidden");
+            }}
+          />
+        </div>
+      ) : null}
+      <span className="font-display text-[11px] md:text-xs tracking-[0.18em] uppercase text-[var(--color-paper)]/85 transition-colors duration-500 group-hover:text-[var(--color-accent)]">
+        {name}
+      </span>
     </div>
   );
 }

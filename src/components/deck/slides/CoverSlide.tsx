@@ -15,7 +15,7 @@ export function CoverSlide({ slide }: Props) {
 
   return (
     <SlideRoot tone={slide.tone ?? "ink"} bg={slide.bg}>
-      <div className="flex flex-1 flex-col justify-end">
+      <div className="flex flex-1 flex-col justify-center">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export function CoverSlide({ slide }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease, delay: 0.25 }}
           className="font-display font-light leading-[0.98] max-w-5xl"
-          style={{ fontSize: "var(--text-display-xl)" }}
+          style={{ fontSize: "clamp(2.75rem, 6.5vw, 6rem)" }}
         >
           {slide.headline}
         </motion.h1>
@@ -40,7 +40,7 @@ export function CoverSlide({ slide }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.45 }}
-            className="mt-8 max-w-2xl text-lg md:text-xl font-light leading-relaxed opacity-80"
+            className="mt-7 max-w-2xl text-base md:text-lg lg:text-xl font-light leading-relaxed opacity-80"
           >
             {slide.body}
           </motion.p>
@@ -51,7 +51,7 @@ export function CoverSlide({ slide }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.6 }}
-            className="mt-14 grid grid-cols-3 gap-6 md:gap-12 max-w-3xl border-t border-[var(--color-line)] pt-8"
+            className="mt-10 grid grid-cols-3 gap-6 md:gap-12 max-w-3xl border-t border-[var(--color-line)] pt-6"
           >
             {slide.stats!.map((stat) => (
               <StatCounter
@@ -69,7 +69,7 @@ export function CoverSlide({ slide }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.6 }}
-            className="mt-10 max-w-xl space-y-3 text-sm opacity-80"
+            className="mt-8 max-w-xl space-y-3 text-sm opacity-80"
           >
             {slide.metrics!.map((m) => (
               <li
