@@ -160,8 +160,17 @@ const retailChapter: Chapter = {
       id: "retail-tenants",
       tone: "ink",
       eyebrow: "Featured tenants",
-      headline: <>A sample of who&apos;s already here.</>,
-      items: mall.flagshipTenants.map((t) => t.name),
+      headline: (
+        <>
+          A sample of who&apos;s
+          <br />
+          {accent("already here.")}
+        </>
+      ),
+      variant: "logos",
+      items: mall.flagshipTenants
+        .filter((t) => t.category !== "luxury")
+        .map((t) => t.name),
     },
   ],
 };
@@ -171,19 +180,19 @@ const luxuryChapter: Chapter = {
   index: 3,
   label: "Luxury",
   tagline: "The quiet wing",
-  tone: "paper",
+  tone: "ink-soft",
   tile: { image: "/images/luxury/burberry.png", alt: "Luxury wing" },
   slides: [
     {
       kind: "cover",
       id: "luxury-headline",
-      tone: "paper",
+      tone: "ink-soft",
       eyebrow: "Elevated",
       headline: (
         <>
           The quiet wing.
           <br />
-          {italic("Where brand meets patron.")}
+          {accentItalic("Where brand meets patron.")}
         </>
       ),
       body: "Luxury at Mall of America isn't an afterthought — it's a curated, appointment-ready wing designed for high-intent shoppers who fly in specifically to visit.",
@@ -196,9 +205,13 @@ const luxuryChapter: Chapter = {
     {
       kind: "grid",
       id: "luxury-brands",
-      tone: "paper",
+      tone: "ink-soft",
       eyebrow: "Flagship brands",
-      headline: <>The wing&apos;s anchors.</>,
+      headline: (
+        <>
+          The wing&apos;s {accent("anchors.")}
+        </>
+      ),
       columns: 4,
       cards: luxuryTenants.map((t) => ({
         id: t.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
@@ -244,12 +257,10 @@ const diningChapter: Chapter = {
       eyebrow: "Signature restaurants",
       headline: (
         <>
-          Six picks
-          <br />
-          {accent("tenants cite most often.")}
+          Six picks {accent("tenants cite most often.")}
         </>
       ),
-      columns: 2,
+      columns: 3,
       cards: mall.dining.highlights.map((h, i) => {
         const [name, ...rest] = h.split(" — ");
         return {

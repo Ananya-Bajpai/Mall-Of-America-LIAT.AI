@@ -81,7 +81,7 @@ export const mall = {
   },
 
   retailCategories: [
-    { name: "Flagship", count: "30+", note: "Apple, Nike, LEGO, Microsoft" },
+    { name: "Flagship", count: "30+", note: "Apple, Nike, LEGO, Uniqlo" },
     { name: "Specialty", count: "320+", note: "Curated across fashion, beauty, tech" },
     { name: "Lifestyle", count: "90+", note: "Athleisure, wellness, home" },
     { name: "Pop-Up & Emerging", count: "40+", note: "Rotating experiential retail" },
@@ -91,7 +91,7 @@ export const mall = {
     { name: "Apple", category: "flagship" },
     { name: "Nike", category: "flagship" },
     { name: "LEGO", category: "flagship" },
-    { name: "Microsoft", category: "flagship" },
+    { name: "Uniqlo", category: "flagship" },
     { name: "Zara", category: "flagship" },
     { name: "Sephora", category: "flagship" },
     { name: "Louis Vuitton", category: "luxury", image: "/images/luxury/louis-vuitton.png" },

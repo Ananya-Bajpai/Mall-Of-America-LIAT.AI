@@ -82,6 +82,8 @@ export type TenantWallSlideData = SlideBase & {
   eyebrow: string;
   headline: ReactNode;
   items: string[];
+  /** "logos" renders each item as a large wordmark tile. "chips" renders pills (default). */
+  variant?: "logos" | "chips";
 };
 
 export type Slide =
