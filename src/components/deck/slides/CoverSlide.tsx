@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SlideRoot } from "./SlideRoot";
 import { StatCounter } from "@/components/ui/StatCounter";
+import { cn } from "@/lib/utils";
 import type { CoverSlideData } from "@/lib/deck/types";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -51,7 +52,14 @@ export function CoverSlide({ slide }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease, delay: 0.6 }}
-            className="mt-10 grid grid-cols-3 gap-6 md:gap-12 max-w-3xl border-t border-[var(--color-line)] pt-6"
+            className={cn(
+              "mt-10 grid gap-6 md:gap-10 max-w-4xl border-t border-[var(--color-line)] pt-6",
+              slide.stats!.length === 4
+                ? "grid-cols-2 md:grid-cols-4"
+                : slide.stats!.length === 2
+                  ? "grid-cols-2"
+                  : "grid-cols-3",
+            )}
           >
             {slide.stats!.map((stat) => (
               <StatCounter

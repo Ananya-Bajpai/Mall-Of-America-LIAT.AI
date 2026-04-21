@@ -404,6 +404,13 @@ const partnerChapter: Chapter = {
         </>
       ),
       body: "Every slide before this is the pitch. This one is the ask. Pick the path that fits and the right team will be on the call within 48 hours.",
+      bg: {
+        kind: "image",
+        src: "/images/partner-hero.png",
+        alt: "Partnership at Mall of America",
+        overlay:
+          "bg-gradient-to-b from-[var(--color-ink)]/70 via-[var(--color-ink)]/65 to-[var(--color-ink)]/92",
+      },
     },
     {
       kind: "grid",

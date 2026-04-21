@@ -26,7 +26,7 @@ export function TenantWallSlide({ slide }: Props) {
 
   return (
     <SlideRoot tone={slide.tone ?? "ink"}>
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col justify-center">
         <div className="max-w-3xl mb-8 md:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -66,7 +66,7 @@ function LogoWall({ items }: { items: string[] }) {
   return (
     <div
       className={cn(
-        "mt-auto grid gap-px border bg-[var(--color-line)] border-[var(--color-line)]",
+        "grid gap-px border bg-[var(--color-line)] border-[var(--color-line)]",
         cols,
       )}
     >
@@ -116,7 +116,7 @@ function LogoTile({ name }: { name: string }) {
 
 function ChipWall({ items }: { items: string[] }) {
   return (
-    <div className="mt-auto flex flex-wrap gap-3 md:gap-4">
+    <div className="flex flex-wrap gap-3 md:gap-4">
       {items.map((item, i) => (
         <motion.div
           key={item}

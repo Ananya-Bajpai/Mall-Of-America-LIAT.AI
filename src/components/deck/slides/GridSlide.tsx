@@ -23,7 +23,7 @@ export function GridSlide({ slide }: Props) {
 
   return (
     <SlideRoot tone={slide.tone ?? "ink"}>
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-1 flex-col justify-center">
         <div className="max-w-3xl mb-8 md:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -46,7 +46,7 @@ export function GridSlide({ slide }: Props) {
 
         <div
           className={cn(
-            "mt-auto grid gap-px border",
+            "grid gap-px border",
             isLightTone
               ? "bg-[var(--color-ink)]/10 border-[var(--color-ink)]/10"
               : "bg-[var(--color-line)] border-[var(--color-line)]",
