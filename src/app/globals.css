@@ -41,20 +41,21 @@
   color-scheme: dark;
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body {
+  height: 100%;
   background: var(--color-ink);
 }
 
 body {
-  background: var(--color-ink);
   color: var(--color-paper);
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 /* Display text uses serif */

@@ -1,78 +1,146 @@
 # Mall of America — Interactive Sales Deck
 
-A cinematic, browser-based sales experience for Mall of America, built for leasing, sponsorship, and event-booking conversations with decision-makers at brands, agencies, and production companies.
+A browser-based, Digideck-format sales deck for Mall of America — purpose-built for leasing, sponsorship, and event-booking conversations with decision-makers at brands, agencies, and production companies.
 
-> This is not a website. It is a purpose-built, non-linear sales tool that tells the property's story through video, data, and narrative — polished enough to screen-share on a live sales call, self-contained enough to send as a standalone link.
+> Not a website. A **presentation deck**: one-idea-per-slide, full-viewport stage, chapter/slide hierarchy, non-linear navigation. Screen-share it on a live call, or drop the shareable link in an email and let a prospect walk it at their own pace.
 
 ## Live Demo
 
-🔗 **Live:** https://mall-of-america-deck-one.vercel.app
-🔗 **GitHub:** https://github.com/Ananya-Bajpai/Mall-Of-America-LIAT.AI
+- **Live:** https://mall-of-america-deck-one.vercel.app
+- **GitHub:** https://github.com/Ananya-Bajpai/Mall-Of-America-LIAT.AI
+
+## Format
+
+Modeled on Sportsdigita's Digideck — the presentation format the assignment brief referenced:
+
+- **Main Menu** is the landing view: hero video + seven chapter tiles. The viewer picks any chapter to start.
+- **Chapter / Slide hierarchy** — 7 content chapters, 22 slides, each slide a single full-viewport idea.
+- **Persistent chrome** — top-bar chapter dropdown and bottom-bar prev/next are one click away from any slide.
+- **Non-linear** — jump to any chapter instantly from the dropdown or a number key; no forced linear progression.
+- **Deep-linkable** — every slide has a URL hash (`#/retail/2`) so refresh lands you on the same slide and browser back/forward cycles through history.
+- **Shareable standalone link** — the Vercel URL opens into the deck viewport, no login, works live or async.
+
+## Keyboard Shortcuts
+
+| Key | Action |
+| --- | --- |
+| `→` / `Space` / `PageDown` | Next slide |
+| `←` / `PageUp` | Previous slide |
+| `↓` | Next chapter |
+| `↑` | Previous chapter |
+| `1`–`7` | Jump to chapter N |
+| `H` / `Home` | Return to main menu |
+| `F` | Toggle fullscreen |
+| `?` | Show keyboard help |
+
+**Touch:** swipe left/right to advance. Chapter dropdown works on tap.
+
+## Deck Content
+
+```
+00 · Main Menu                  hero.mp4 + seven chapter tiles
+
+01 · Why MOA
+     1.1  "One third of North America…"      cover + reach stats
+     1.2  Regional reach banner              full-bleed map + caption
+     1.3  Audience demographics              6-stat wall
+
+02 · Retail
+     2.1  "520+ brands"                      cover headline
+     2.2  Flagship anchors                   banner + caption
+     2.3  Category breakdown                 4-card grid
+     2.4  Featured tenants                   chip wall
+
+03 · Luxury                                  (paper tone — the "quiet wing")
+     3.1  "The quiet wing"                   cover + luxury metrics
+     3.2  Flagship brands                    4-tile luxury grid
+
+04 · Dining
+     4.1  "Food is the reason"               cover over dining-hero
+     4.2  Signature restaurants              6-card highlight grid
+
+05 · Entertainment                           (entertainment.mp4 background)
+     5.1  "Other malls have shops…"          cover
+     5.2–5.7  Six attractions                Nickelodeon · SEA LIFE · FlyOver ·
+                                             Crayola · Escape Game · Mirror Maze
+
+06 · Events                                  (events.mp4 background)
+     6.1  "A stage for cultural moments"     cover
+     6.2  Four broadcast venues              2×2 grid
+     6.3  Recent highlights                  chip wall
+
+07 · Partner
+     7.1  "Three ways to partner"            cover
+     7.2  Lease · Sponsor · Book             3-card CTA grid with mailto links
+```
 
 ## Stack
 
-| Layer | Choice | Why |
-| --- | --- | --- |
-| Framework | Next.js 16 (App Router, Turbopack) | Static-export friendly, top-tier Lighthouse scores, modern React 19 features |
-| Language | TypeScript | Type safety across data → components |
-| Styling | Tailwind CSS v4 | CSS-first design tokens via `@theme`, zero runtime CSS |
-| Motion | Framer Motion | Component-level entrance, transitions, overlay menu |
-| Icons | lucide-react | Lightweight, consistent line icons |
-| Fonts | Inter (sans) + Fraunces (display serif) | Self-hosted via `next/font/google` for luxury typographic contrast |
+| Layer | Choice |
+| --- | --- |
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 (`@theme` tokens) |
+| Motion | Framer Motion (respects `prefers-reduced-motion`) |
+| Icons | lucide-react |
+| Fonts | Inter (sans) + Fraunces (display serif) via `next/font/google` |
 
 ## Architecture
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout, fonts, metadata
-│   ├── page.tsx            # Composes the deck
-│   └── globals.css         # Tailwind v4 @theme tokens, motion rules
+│   ├── layout.tsx          # Fonts + site metadata
+│   ├── page.tsx            # <DeckShell />
+│   └── globals.css         # Tokens, no-scroll body
 ├── components/
-│   ├── deck/               # DeckNavigation, DeckSection — shell
-│   ├── sections/           # One file per story beat
-│   └── ui/                 # Reusable primitives (StatCounter, VideoBackground)
+│   ├── deck/
+│   │   ├── DeckShell.tsx           # Root: state + chrome + stage
+│   │   ├── SlideStage.tsx          # AnimatePresence slide switcher
+│   │   ├── MainMenu.tsx            # Chapter-tile landing view
+│   │   ├── DeckTopBar.tsx          # Home · Chapters · Fullscreen · Help
+│   │   ├── DeckBottomBar.tsx       # Chapter label · counter · prev/next
+│   │   ├── ChapterDropdown.tsx     # Non-linear jump menu
+│   │   ├── FullscreenToggle.tsx    # F key + API toggle
+│   │   ├── KeyboardHintOverlay.tsx # ? shortcut help modal
+│   │   └── slides/
+│   │       ├── SlideRoot.tsx       # Tone + bg frame, chrome-aware padding
+│   │       ├── CoverSlide.tsx      # Chapter openers
+│   │       ├── DataWallSlide.tsx   # Stat walls
+│   │       ├── BannerSlide.tsx     # Full-bleed image + caption
+│   │       ├── GridSlide.tsx       # N-up card grids (2/3/4 cols)
+│   │       ├── AttractionSlide.tsx # Image + name + stat + detail
+│   │       └── TenantWallSlide.tsx # Chip wall
+│   └── ui/                         # VideoBackground, StatCounter (reused)
 └── lib/
-    ├── data/
-    │   └── mall-of-america.ts   # Single source of truth
-    ├── hooks/
-    │   └── useInView.ts
-    └── utils.ts
+    ├── data/mall-of-america.ts     # Content source of truth
+    ├── deck/
+    │   ├── types.ts                # Chapter / Slide types
+    │   └── chapters.tsx            # Deck structure (23 slides / 8 chapters)
+    └── hooks/
+        ├── useDeckState.ts         # Position + URL hash + keyboard
+        ├── useSwipe.ts             # Mobile swipe gestures
+        └── useInView.ts
 ```
 
-**Expandability by design:**
-
-- Every section is a self-contained component consuming data from `lib/data/mall-of-america.ts`. Swapping to a different property means changing one file.
-- The `sections/` directory has no cross-references — sections can be reordered, removed, or duplicated by editing `page.tsx`.
-- Phase 2 sub-modules (Events Module, Sponsorship Module, Leasing Paths, Venue-Specific Modules) slot into a new `app/modules/<name>/page.tsx` route using the same `DeckSection` primitive.
-
-## Sections (Phase 1)
-
-1. **Hero** — Cinematic intro. Cinemagraph background, staggered-reveal headline, three anchor stats.
-2. **Why This Property** — Regional reach, economic impact, audience demographics.
-3. **Retail** — 520+ brand landscape, category breakdown, flagship tenant marquee.
-4. **Luxury** — Elevated paper-toned section. Shopper economics + brand wall.
-5. **Dining & Lifestyle** — Culinary concepts as a destination draw.
-6. **Entertainment** — The differentiator: Nickelodeon Universe, SEA LIFE, FlyOver America, etc.
-7. **Events & Platform** — Four broadcast-ready venues and a resume of hosted moments.
-8. **Call to Action** — Three business paths: Lease · Partner · Book the Property.
+**Expandability:** every slide is a typed variant (`cover | dataWall | banner | grid | attraction | tenantWall`) driven from `chapters.tsx`. Add a chapter or reorder slides by editing one file. Add a new slide kind by adding a `SlideData` variant + a component + a `switch` case in `SlideStage`.
 
 ## Interaction Design
 
-- **Non-linear navigation.** Floating dot nav (desktop), overlay menu (mobile + power users).
-- **Keyboard shortcuts.** `↑ ↓ j k` navigate sections, `m` toggles menu, `Esc` closes it.
-- **Scroll-triggered animations** via Framer Motion `whileInView` and a custom `useInView` hook for counters.
-- **Scroll progress bar** at the top edge for presentation-mode feedback.
-- **Respect for `prefers-reduced-motion`** — all motion disabled for users who opt out.
+- **Auto-hide chrome** on desktop after 3.5s of inactivity (mouse/keyboard bump re-reveals). Always visible on touch.
+- **Slide transitions** — 550ms fade + 20px upward parallax, `easeOutExpo`. Reduced-motion users get cuts.
+- **Tone system** — each chapter has a tone (`ink` / `ink-soft` / `paper`). Chrome text color adapts so the luxury `paper` chapter reads correctly on light background.
+- **Main Menu** is visually distinct — grid layout + hero video, not stacked content — so the viewer always knows they're "outside" a chapter.
+- **Deep-link flash** is minimized: `useDeckState` applies the URL hash in a mount effect before first slide paint.
 
 ## Design System
 
 Defined in `src/app/globals.css` as Tailwind v4 `@theme` tokens:
 
-- **Palette** — `--color-ink` (near-black), `--color-paper` (warm off-white), `--color-accent` (muted gold), `--color-signal` (deep red).
-- **Typography** — Fraunces serif for display, Inter for body. Fluid `clamp()`-based display scale.
-- **Motion** — Shared cubic-bezier easings (`ease-out-expo`) and duration tokens.
-- **Grain overlay** — Optional filmic noise via the `.grain` utility (SVG fractal noise, ~1 KB).
+- **Palette** — `--color-ink` (near-black), `--color-ink-soft`, `--color-paper` (warm off-white), `--color-accent` (muted gold), `--color-signal` (deep red).
+- **Typography** — Fraunces serif for display, Inter for body. Fluid `clamp()` display scale (`--text-display-xl/lg/md`).
+- **Motion** — shared cubic-bezier easings and duration tokens.
+- **Layout** — `--max-content` and `--gutter` for consistent horizontal rhythm across slides.
 
 ## Running Locally
 
@@ -83,14 +151,14 @@ pnpm build      # Production build
 pnpm start      # Production server
 ```
 
-**Prereqs:** Node 20.9+, pnpm 9+.
+Prereqs: Node 20.9+, pnpm 9+.
 
 ## AI Usage
 
 Per the assignment brief, AI was used to accelerate both asset creation and development:
 
-- **Google Gemini (Pro)** — Image and video asset generation (hero cinemagraph, attraction imagery, luxury renderings). Prompts tailored to match the `--color-accent` gold/ink palette.
-- **Claude Code** — Architecture, component scaffolding, copy drafts for section narratives.
+- **Google Gemini** — image and video asset generation (hero cinemagraph, attraction imagery, luxury renderings). Prompts tailored to match the `--color-accent` gold/ink palette.
+- **Claude Code** — architecture, component scaffolding, copy drafts for slide narratives.
 
 All AI-generated assets are supplementary to public materials from Mall of America's press kit and official channels.
 
@@ -110,27 +178,21 @@ Key techniques:
 - Turbopack for dev and build (Next.js 16 default)
 - `next/font/google` with `display: swap`
 - Video lazy-loading and pause-offscreen via IntersectionObserver
-- Framer Motion `whileInView` (vs. mounting all motion eagerly)
+- `AnimatePresence mode="wait"` — only one slide tree mounted at a time
+- Images via `next/image` with explicit `sizes` + `fill` for optimized delivery
 - Tailwind v4 purges unused utilities at build time
 
 ## Deployment
 
-Configured for Vercel. To deploy:
-
-```bash
-pnpm build
-# then push to a GitHub repo and connect on vercel.com
-```
-
-No environment variables required.
+Auto-deploys on every push to `main` via Vercel. No environment variables required.
 
 ## What I'd Improve With More Time
 
-- Replace placeholder video backgrounds with edited 10–15s MP4 loops per section
-- Add a dedicated **Events Sub-Module** at `/modules/events` with a per-venue deep dive, past-event case studies, and a lightweight date-picker CTA
-- Integrate **React View Transitions** (stable in Next.js 16) for between-section transitions
-- Real map integration in "Why This Property" (Mapbox static tile + pins)
-- Lightbox for the attractions grid so each card opens a focused video/story view
+- Sportsdigita-style clickable SVG maps (e.g. floor-by-floor Image Navigation on a property plan slide).
+- Per-slide analytics hooks (view time, exit slide) — Digideck's analytics model.
+- Password-gated shareable link variants per prospect (Leasing vs. Sponsorship vs. Events).
+- Events Sub-Module at `/modules/events` with per-venue deep dive + lightweight date-picker CTA.
+- Real Mapbox integration in the regional-reach slide.
 
 ## License
 
