@@ -86,13 +86,35 @@ export type TenantWallSlideData = SlideBase & {
   variant?: "logos" | "chips";
 };
 
+/**
+ * Full-bleed cinematic transition slide. Plays a video if `video` is set and the file
+ * resolves; otherwise renders the `poster` image with a slow Ken Burns animation.
+ * Auto-advances when the video ends, when the Ken Burns animation completes, or on click.
+ */
+export type CinematicSlideData = SlideBase & {
+  kind: "cinematic";
+  /** Optional MP4 source. If absent or 404, component falls back to poster + Ken Burns. */
+  video?: string;
+  /** Poster image — required. Doubles as the Ken Burns visual when video is unavailable. */
+  poster: string;
+  /** Alt text for the poster (also used as accessible label for the slide). */
+  alt: string;
+  /** Eyebrow word above the title (e.g., "01 — The Stage"). */
+  eyebrow?: string;
+  /** Title overlay that fades in toward the end of the cinematic. Optional. */
+  title?: ReactNode;
+  /** How long the Ken Burns fallback runs before auto-advancing. Default 4s. */
+  fallbackDurationMs?: number;
+};
+
 export type Slide =
   | CoverSlideData
   | DataWallSlideData
   | BannerSlideData
   | GridSlideData
   | AttractionSlideData
-  | TenantWallSlideData;
+  | TenantWallSlideData
+  | CinematicSlideData;
 
 export type Chapter = {
   id: string;

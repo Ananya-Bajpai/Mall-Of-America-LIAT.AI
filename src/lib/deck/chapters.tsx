@@ -53,11 +53,27 @@ const coverChapter: Chapter = {
 const whyChapter: Chapter = {
   id: "why",
   index: 1,
-  label: "Why MOA",
+  label: "The Stage",
   tagline: "Location, scale, audience",
   tone: "ink-soft",
   tile: { image: "/images/why.png", alt: "Regional reach" },
   slides: [
+    {
+      kind: "cinematic",
+      id: "why-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-01-stage.mp4",
+      poster: "/images/why.png",
+      alt: "Aerial transition from Twin Cities into Mall of America",
+      eyebrow: "01 — The Stage",
+      title: (
+        <>
+          One third of North America
+          <br />
+          {accent("a day's drive away.")}
+        </>
+      ),
+    },
     {
       kind: "cover",
       id: "why-headline",
@@ -113,6 +129,20 @@ const retailChapter: Chapter = {
   tone: "ink",
   tile: { image: "/images/retail-flagship.png", alt: "Retail flagships" },
   slides: [
+    {
+      kind: "cinematic",
+      id: "retail-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-02-retail.mp4",
+      poster: "/images/retail-flagship.png",
+      alt: "Apple Store flagship row before opening",
+      eyebrow: "02 — Retail Climate",
+      title: (
+        <>
+          Where brands {accent("debut.")}
+        </>
+      ),
+    },
     {
       kind: "cover",
       id: "retail-headline",
@@ -178,11 +208,27 @@ const retailChapter: Chapter = {
 const luxuryChapter: Chapter = {
   id: "luxury",
   index: 3,
-  label: "Luxury",
-  tagline: "The quiet wing",
+  label: "The Quiet Wing",
+  tagline: "Where brand meets patron",
   tone: "ink-soft",
   tile: { image: "/images/luxury/burberry.png", alt: "Luxury wing" },
   slides: [
+    {
+      kind: "cinematic",
+      id: "luxury-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-03-luxury.mp4",
+      poster: "/images/luxury/burberry.png",
+      alt: "Hushed luxury boutique vestibule",
+      eyebrow: "03 — The Quiet Wing",
+      title: (
+        <>
+          Where brand
+          <br />
+          {accentItalic("meets patron.")}
+        </>
+      ),
+    },
     {
       kind: "cover",
       id: "luxury-headline",
@@ -225,11 +271,27 @@ const luxuryChapter: Chapter = {
 const diningChapter: Chapter = {
   id: "dining",
   index: 4,
-  label: "Dining",
+  label: "The Table",
   tagline: "60+ restaurants",
   tone: "ink-soft",
   tile: { image: "/images/dining-hero.png", alt: "Dining at MOA" },
   slides: [
+    {
+      kind: "cinematic",
+      id: "dining-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-04-dining.mp4",
+      poster: "/images/dining-hero.png",
+      alt: "Chef plating at a candle-lit MOA dining table",
+      eyebrow: "04 — The Table",
+      title: (
+        <>
+          Food isn&apos;t the amenity.
+          <br />
+          {accentItalic("It's the reason.")}
+        </>
+      ),
+    },
     {
       kind: "cover",
       id: "dining-headline",
@@ -277,7 +339,7 @@ const diningChapter: Chapter = {
 const entertainmentChapter: Chapter = {
   id: "entertainment",
   index: 5,
-  label: "Entertainment",
+  label: "The Theme Park Inside",
   tagline: "The differentiator",
   tone: "ink",
   tile: {
@@ -285,6 +347,22 @@ const entertainmentChapter: Chapter = {
     alt: "Entertainment at MOA",
   },
   slides: [
+    {
+      kind: "cinematic",
+      id: "entertainment-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-05-themepark.mp4",
+      poster: "/images/attractions/nickelodeon.png",
+      alt: "Roller coaster cresting under MOA's atrium skylights",
+      eyebrow: "05 — The Theme Park Inside",
+      title: (
+        <>
+          Other malls have shops.
+          <br />
+          {accentItalic("We have a day.")}
+        </>
+      ),
+    },
     {
       kind: "cover",
       id: "entertainment-headline",
@@ -320,11 +398,27 @@ const entertainmentChapter: Chapter = {
 const eventsChapter: Chapter = {
   id: "events",
   index: 6,
-  label: "Events",
+  label: "Cultural Moments",
   tagline: "A global platform",
   tone: "ink",
   tile: { image: "/images/attractions/flyover.png", alt: "Events platform" },
   slides: [
+    {
+      kind: "cinematic",
+      id: "events-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-06-cultural.mp4",
+      poster: "/images/attractions/flyover.png",
+      alt: "The Rotunda packed mid-event, broadcast lights and crowd phone glow",
+      eyebrow: "06 — Cultural Moments",
+      title: (
+        <>
+          Not a mall.
+          <br />
+          A stage for {accentItalic("cultural moments.")}
+        </>
+      ),
+    },
     {
       kind: "cover",
       id: "events-headline",
@@ -389,8 +483,25 @@ const partnerChapter: Chapter = {
   label: "Partner",
   tagline: "Next steps",
   tone: "ink",
-  tile: { image: "/images/retail-flagship.png", alt: "Partner with MOA" },
+  tile: { image: "/images/partner-hero.png", alt: "Partner with MOA" },
   slides: [
+    {
+      kind: "cinematic",
+      id: "partner-cinematic",
+      tone: "ink",
+      video: "/videos/chapter-08-partner.mp4",
+      poster: "/images/partner-hero.png",
+      alt: "Two hands meeting across a walnut conference table at golden hour",
+      eyebrow: "07 — Partner",
+      title: (
+        <>
+          Three ways
+          <br />
+          {accentItalic("to partner.")}
+        </>
+      ),
+      fallbackDurationMs: 3500,
+    },
     {
       kind: "cover",
       id: "partner-headline",

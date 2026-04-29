@@ -91,7 +91,7 @@ export function DeckShell() {
             transition={{ duration: 0.3 }}
             className="absolute inset-0"
           >
-            <SlideStage slide={slide} slideKey={slideKey} />
+            <SlideStage slide={slide} slideKey={slideKey} onAdvance={next} />
           </motion.div>
         )}
       </AnimatePresence>
