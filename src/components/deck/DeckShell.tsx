@@ -70,7 +70,7 @@ export function DeckShell() {
       ref={containerRef}
       className="relative h-dvh w-screen overflow-hidden bg-[var(--color-ink)]"
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         {isMainMenu ? (
           <motion.div
             key="main-menu"

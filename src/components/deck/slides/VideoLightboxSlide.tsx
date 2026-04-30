@@ -38,7 +38,7 @@ export function VideoLightboxSlide({ slide }: Props) {
           </motion.h2>
         </div>
 
-        <div className="grid flex-1 grid-cols-2 gap-2 md:grid-cols-3 md:gap-3">
+        <div className="grid flex-1 grid-cols-2 gap-2 md:grid-cols-3 md:grid-rows-2 md:gap-3 min-h-0">
           {slide.items.map((item, i) => (
             <motion.button
               key={item.id}
@@ -57,7 +57,7 @@ export function VideoLightboxSlide({ slide }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.35 + i * 0.06 }}
               aria-label={`Watch ${item.title}`}
-              className="group relative aspect-[4/3] overflow-hidden rounded-sm border border-[var(--color-line)] bg-[var(--color-ink)]"
+              className="group relative aspect-[4/3] md:aspect-auto md:min-h-0 overflow-hidden rounded-sm border border-[var(--color-line)] bg-[var(--color-ink)]"
             >
               <Image
                 src={item.poster}

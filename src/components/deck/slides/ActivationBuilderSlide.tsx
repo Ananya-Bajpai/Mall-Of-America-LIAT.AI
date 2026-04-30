@@ -32,7 +32,7 @@ function brandToDomain(brand: string): string | null {
 }
 
 export function ActivationBuilderSlide({ slide }: Props) {
-  const [path, setPath] = useState<ActivationPath>("sponsor");
+  const [path, setPath] = useState<ActivationPath>("lease");
   const [brandInput, setBrandInput] = useState<string>("");
   const [committedBrand, setCommittedBrand] = useState<string>("Nike");
   const [logoOk, setLogoOk] = useState<boolean>(true);
@@ -64,7 +64,7 @@ export function ActivationBuilderSlide({ slide }: Props) {
   return (
     <SlideRoot tone={slide.tone ?? "ink"}>
       <div className="flex flex-1 flex-col">
-        <div className="max-w-3xl mb-6">
+        <div className="max-w-3xl mb-4">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,26 +85,26 @@ export function ActivationBuilderSlide({ slide }: Props) {
           </motion.h2>
         </div>
 
-        <div className="grid flex-1 grid-cols-1 gap-6 md:gap-8 lg:grid-cols-[1fr_1.2fr]">
+        <div className="grid flex-1 grid-cols-1 gap-4 md:gap-6 lg:grid-cols-[1fr_1.2fr] min-h-0">
           {/* Controls */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             {/* Step 1 — pick path */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.35 }}
             >
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-3">
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-2">
                 01 · Pick your path
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1.5">
                 {(Object.keys(PATH_LABELS) as ActivationPath[]).map((p) => (
                   <button
                     key={p}
                     type="button"
                     onClick={() => setPath(p)}
                     className={cn(
-                      "group flex items-center justify-between gap-3 rounded-sm border px-4 py-3 text-left transition-all",
+                      "group flex items-center justify-between gap-3 rounded-sm border px-4 py-2.5 text-left transition-all",
                       path === p
                         ? "border-[var(--color-accent)] bg-[var(--color-accent)]/8 text-[var(--color-paper)]"
                         : "border-[var(--color-line)] text-[var(--color-paper)]/75 hover:border-[var(--color-paper)]/40",
@@ -138,7 +138,7 @@ export function ActivationBuilderSlide({ slide }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.5 }}
             >
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-3">
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-2">
                 02 · Drop your brand
               </div>
               <form
@@ -155,7 +155,7 @@ export function ActivationBuilderSlide({ slide }: Props) {
                   onBlur={commitBrand}
                   placeholder={committedBrand}
                   aria-label="Type a brand name"
-                  className="flex-1 rounded-sm border border-[var(--color-line)] bg-transparent px-4 py-3 font-display text-base text-[var(--color-paper)] outline-none placeholder:text-[var(--color-paper)]/40 focus:border-[var(--color-accent)]"
+                  className="flex-1 rounded-sm border border-[var(--color-line)] bg-transparent px-4 py-2.5 font-display text-base text-[var(--color-paper)] outline-none placeholder:text-[var(--color-paper)]/75 focus:border-[var(--color-accent)]"
                 />
                 <button
                   type="submit"
@@ -164,7 +164,7 @@ export function ActivationBuilderSlide({ slide }: Props) {
                   Apply
                 </button>
               </form>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 {PRESET_BRANDS.map((b) => (
                   <button
                     key={b}
@@ -189,17 +189,17 @@ export function ActivationBuilderSlide({ slide }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.65 }}
             >
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-3">
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-2">
                 03 · Your activation
               </div>
-              <div className="grid grid-cols-3 gap-3 rounded-sm border border-[var(--color-line)] p-4">
+              <div className="grid grid-cols-3 gap-3 rounded-sm border border-[var(--color-line)] p-3">
                 <Stat label="Reach" value={venue.reach} />
                 <Stat label="Comp tier" value={venue.comp} />
                 <Stat label="Lead time" value={venue.leadTime} />
               </div>
               <a
                 href={ctaHref}
-                className="mt-4 inline-flex items-center gap-3 rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)] px-6 py-3 font-display text-sm tracking-[0.15em] uppercase text-[var(--color-ink)] transition-colors hover:bg-[var(--color-accent)]/85"
+                className="mt-3 inline-flex items-center gap-3 rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)] px-6 py-2.5 font-display text-sm tracking-[0.15em] uppercase text-[var(--color-ink)] transition-colors hover:bg-[var(--color-accent)]/85"
               >
                 <span>Get a real plan in 48 hours</span>
                 <ArrowRight size={16} />

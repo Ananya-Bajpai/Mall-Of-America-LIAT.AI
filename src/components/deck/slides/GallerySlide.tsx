@@ -79,7 +79,7 @@ export function GallerySlide({ slide }: Props) {
           </motion.div>
 
           {/* Thumbnail rail */}
-          <div className="flex flex-row gap-3 md:flex-col">
+          <div className="flex flex-row gap-3 md:flex-col md:h-full">
             {slide.items.map((item, i) => (
               <motion.button
                 key={item.id}
@@ -90,7 +90,7 @@ export function GallerySlide({ slide }: Props) {
                 transition={{ duration: 0.4, ease, delay: 0.45 + i * 0.06 }}
                 aria-label={`Show ${item.title}`}
                 className={cn(
-                  "relative flex-1 overflow-hidden rounded-sm border-2 transition-all aspect-square md:aspect-[4/3]",
+                  "relative aspect-square flex-1 overflow-hidden rounded-sm border-2 transition-all md:aspect-auto md:min-h-0",
                   activeIdx === i
                     ? "border-[var(--color-accent)] opacity-100"
                     : "border-[var(--color-line)] opacity-55 hover:opacity-90",

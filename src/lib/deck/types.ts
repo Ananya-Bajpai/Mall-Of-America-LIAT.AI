@@ -198,25 +198,6 @@ export type TimelineSlideData = SlideBase & {
   moments: TimelineMoment[];
 };
 
-/** A clickable region on the property floorplan SVG (chapter id to jump to). */
-export type MapRegion = {
-  /** SVG path's `d` attribute. */
-  d: string;
-  /** Chapter id to jump to. */
-  chapterId: string;
-  label: string;
-  /** Center anchor for the label, in viewBox units. */
-  labelX: number;
-  labelY: number;
-};
-
-export type MapSlideData = SlideBase & {
-  kind: "map";
-  eyebrow: string;
-  headline: ReactNode;
-  regions: MapRegion[];
-};
-
 export type ActivationPath = "lease" | "sponsor" | "event";
 
 export type ActivationVenue = {
@@ -256,7 +237,6 @@ export type Slide =
   | ComparisonSlideData
   | VideoLightboxSlideData
   | TimelineSlideData
-  | MapSlideData
   | ActivationBuilderSlideData;
 
 export type Chapter = {

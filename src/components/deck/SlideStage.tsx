@@ -14,7 +14,6 @@ import { GallerySlide } from "./slides/GallerySlide";
 import { ComparisonSlide } from "./slides/ComparisonSlide";
 import { VideoLightboxSlide } from "./slides/VideoLightboxSlide";
 import { TimelineSlide } from "./slides/TimelineSlide";
-import { MapSlide } from "./slides/MapSlide";
 import { ActivationBuilderSlide } from "./slides/ActivationBuilderSlide";
 
 type Props = {
@@ -23,15 +22,11 @@ type Props = {
   slideKey: string;
   /** Called when an interactive slide finishes (e.g. cinematic ends). */
   onAdvance?: () => void;
-  /** For map slides: jump to a specific chapter. */
+  /** Reserved for future jump-to-chapter slide variants. */
   onJumpChapter?: (idx: number) => void;
 };
 
-function renderSlide(
-  slide: Slide,
-  onAdvance?: () => void,
-  onJumpChapter?: (idx: number) => void,
-) {
+function renderSlide(slide: Slide, onAdvance?: () => void) {
   switch (slide.kind) {
     case "cover":
       return <CoverSlide slide={slide} />;
@@ -57,16 +52,12 @@ function renderSlide(
       return <VideoLightboxSlide slide={slide} />;
     case "timeline":
       return <TimelineSlide slide={slide} />;
-    case "map":
-      return (
-        <MapSlide slide={slide} onJumpChapter={onJumpChapter ?? (() => {})} />
-      );
     case "activationBuilder":
       return <ActivationBuilderSlide slide={slide} />;
   }
 }
 
-export function SlideStage({ slide, slideKey, onAdvance, onJumpChapter }: Props) {
+export function SlideStage({ slide, slideKey, onAdvance }: Props) {
   const reduced = useReducedMotion();
   return (
     <div className="fixed inset-0 z-0">
@@ -82,7 +73,7 @@ export function SlideStage({ slide, slideKey, onAdvance, onJumpChapter }: Props)
           }}
           className="absolute inset-0"
         >
-          {renderSlide(slide, onAdvance, onJumpChapter)}
+          {renderSlide(slide, onAdvance)}
         </motion.div>
       </AnimatePresence>
     </div>

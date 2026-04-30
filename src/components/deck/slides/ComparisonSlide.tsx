@@ -12,12 +12,12 @@ export function ComparisonSlide({ slide }: Props) {
   return (
     <SlideRoot tone={slide.tone ?? "ink"}>
       <div className="flex flex-1 flex-col justify-center">
-        <div className="max-w-3xl mb-10 md:mb-14">
+        <div className="max-w-3xl mb-5 md:mb-7">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="eyebrow mb-5"
+            className="eyebrow mb-3"
           >
             {slide.eyebrow}
           </motion.div>
@@ -26,7 +26,7 @@ export function ComparisonSlide({ slide }: Props) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.2 }}
             className="font-display font-light leading-[1.05]"
-            style={{ fontSize: "var(--text-display-md)" }}
+            style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
           >
             {slide.headline}
           </motion.h2>
@@ -37,7 +37,7 @@ export function ComparisonSlide({ slide }: Props) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease, delay: 0.35 }}
-          className="mb-4 grid grid-cols-[1fr_auto_auto] gap-x-6 md:gap-x-12 border-b border-[var(--color-line)] pb-3 text-[10px] tracking-[0.25em] uppercase opacity-60"
+          className="mb-4 grid grid-cols-[1fr_clamp(7rem,16vw,10.5rem)_clamp(5.5rem,12vw,8.5rem)] gap-x-6 md:gap-x-10 border-b border-[var(--color-line)] pb-3 text-[10px] tracking-[0.25em] uppercase opacity-60"
         >
           <span></span>
           <span className="text-right text-[var(--color-accent)]">
@@ -54,7 +54,7 @@ export function ComparisonSlide({ slide }: Props) {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease, delay: 0.5 + i * 0.08 }}
-              className="grid grid-cols-[1fr_auto_auto] items-baseline gap-x-6 md:gap-x-12 border-b border-[var(--color-line)]/60 py-5 md:py-7"
+              className="grid grid-cols-[1fr_clamp(7rem,16vw,10.5rem)_clamp(5.5rem,12vw,8.5rem)] items-baseline gap-x-6 md:gap-x-10 border-b border-[var(--color-line)]/60 py-2.5 md:py-3.5"
             >
               <div>
                 <div className="text-sm md:text-base text-[var(--color-paper)]/85">

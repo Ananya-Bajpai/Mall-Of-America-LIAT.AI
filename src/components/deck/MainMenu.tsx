@@ -7,7 +7,6 @@ import { VideoBackground } from "@/components/ui/VideoBackground";
 import { mall } from "@/lib/data/mall-of-america";
 import { deck } from "@/lib/deck/chapters";
 import { cn } from "@/lib/utils";
-import { PropertyMap } from "./PropertyMap";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -18,8 +17,6 @@ type Props = {
 export function MainMenu({ onJumpChapter }: Props) {
   // Chapters 1..n — the cover chapter (0) is this screen itself.
   const chapters = deck.chapters.slice(1);
-  const chapterIndex: Record<string, number> = {};
-  deck.chapters.forEach((c) => (chapterIndex[c.id] = c.index));
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-[var(--color-ink)] text-[var(--color-paper)]">
@@ -35,21 +32,17 @@ export function MainMenu({ onJumpChapter }: Props) {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease, delay: 0.1 }}
-          className="flex items-center justify-between px-4 py-4 md:px-8 md:py-6"
+          className="flex items-center px-4 py-4 md:px-8 md:py-6"
         >
           <div className="font-display text-xs tracking-[0.3em] uppercase">
             {mall.shortName}
           </div>
-          <div className="hidden sm:block text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/60">
-            Interactive sales deck
-          </div>
         </motion.div>
 
-        {/* Headline + interactive map split */}
+        {/* Headline */}
         <div className="flex flex-1 flex-col px-[var(--gutter)] pb-[clamp(1.5rem,4vh,2.5rem)]">
-          <div className="mx-auto grid w-full max-w-[var(--max-content)] flex-1 grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr] lg:gap-12">
-            {/* Left: headline */}
-            <div className="flex flex-col justify-center">
+          <div className="mx-auto flex w-full max-w-[var(--max-content)] flex-1 items-center">
+            <div className="flex max-w-3xl flex-col">
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -109,24 +102,6 @@ export function MainMenu({ onJumpChapter }: Props) {
                 </div>
               </motion.div>
             </div>
-
-            {/* Right: property map */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease, delay: 0.5 }}
-              className="relative flex h-full w-full flex-col"
-            >
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/60 mb-3">
-                Or click any wing to start
-              </div>
-              <div className="relative aspect-square w-full max-w-md self-center overflow-hidden rounded-sm border border-[var(--color-line)]/50 bg-[var(--color-ink)]/50 backdrop-blur-md">
-                <PropertyMap
-                  onJumpChapter={onJumpChapter}
-                  chapterIndex={chapterIndex}
-                />
-              </div>
-            </motion.div>
           </div>
         </div>
 

@@ -45,7 +45,6 @@ export function CinematicSlide({ slide, onComplete }: Props) {
         <video
           ref={videoRef}
           src={slide.video}
-          poster={slide.poster}
           autoPlay
           muted
           playsInline

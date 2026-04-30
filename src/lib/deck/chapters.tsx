@@ -327,25 +327,6 @@ const luxuryChapter: Chapter = {
       ),
     },
     {
-      kind: "cover",
-      id: "luxury-headline",
-      tone: "ink-soft",
-      eyebrow: "Elevated",
-      headline: (
-        <>
-          The quiet wing.
-          <br />
-          {accentItalic("Where brand meets patron.")}
-        </>
-      ),
-      body: "Luxury at Mall of America isn't an afterthought — it's a curated, appointment-ready wing designed for high-intent shoppers who fly in specifically to visit.",
-      metrics: [
-        { label: "Avg. luxury basket", value: "$1,240" },
-        { label: "International shopper share", value: "38%" },
-        { label: "Private appointment requests YoY", value: "+41%" },
-      ],
-    },
-    {
       kind: "gallery",
       id: "luxury-gallery",
       tone: "ink-soft",
@@ -405,26 +386,6 @@ const diningChapter: Chapter = {
       ),
     },
     {
-      kind: "cover",
-      id: "dining-headline",
-      tone: "ink-soft",
-      eyebrow: "Culinary",
-      headline: (
-        <>
-          Food isn&apos;t the amenity. <br />
-          {accentItalic("It's the reason.")}
-        </>
-      ),
-      body: `${mall.dining.totalRestaurants} restaurants — chef-driven concepts, local Twin Cities favorites, fine dining, and global flavors. Average dwell time extends by 90 minutes when visitors dine on-site.`,
-      bg: {
-        kind: "image",
-        src: "/images/dining-hero.png",
-        alt: "Dining at Mall of America",
-        overlay:
-          "bg-gradient-to-b from-[var(--color-ink)]/75 via-[var(--color-ink)]/70 to-[var(--color-ink)]/92",
-      },
-    },
-    {
       kind: "grid",
       id: "dining-highlights",
       tone: "ink-soft",
@@ -474,25 +435,6 @@ const entertainmentChapter: Chapter = {
           {accentItalic("We have a day.")}
         </>
       ),
-    },
-    {
-      kind: "cover",
-      id: "entertainment-headline",
-      tone: "ink",
-      eyebrow: "The differentiator",
-      headline: (
-        <>
-          Other malls have shops. <br />
-          {accentItalic("We have a day.")}
-        </>
-      ),
-      body: "The reason average dwell is 3.5 hours — triple the U.S. mall average — is entertainment built at destination scale. Every attraction ahead is a reason to choose Mall of America over every other option in the region.",
-      bg: {
-        kind: "video",
-        src: "/videos/entertainment.mp4",
-        overlay:
-          "bg-gradient-to-b from-[var(--color-ink)]/75 via-[var(--color-ink)]/70 to-[var(--color-ink)]/95",
-      },
     },
     {
       kind: "videoLightbox",
@@ -547,27 +489,6 @@ const eventsChapter: Chapter = {
           A stage for {accentItalic("cultural moments.")}
         </>
       ),
-    },
-    {
-      kind: "cover",
-      id: "events-headline",
-      tone: "ink",
-      eyebrow: "Global platform",
-      headline: (
-        <>
-          Not a mall.
-          <br />
-          A stage for <br />
-          {accentItalic("cultural moments.")}
-        </>
-      ),
-      body: "When a brand, artist, or team wants to reach the Midwest with scale, they come here. Four broadcast-ready venues. Turnkey production. A permanent audience.",
-      bg: {
-        kind: "video",
-        src: "/videos/events.mp4",
-        overlay:
-          "bg-gradient-to-b from-[var(--color-ink)]/80 via-[var(--color-ink)]/70 to-[var(--color-ink)]/95",
-      },
     },
     {
       kind: "grid",
@@ -760,27 +681,6 @@ const partnerChapter: Chapter = {
         </>
       ),
       fallbackDurationMs: 3500,
-    },
-    {
-      kind: "cover",
-      id: "partner-headline",
-      tone: "ink",
-      eyebrow: "Next steps",
-      headline: (
-        <>
-          Three ways
-          <br />
-          {accentItalic("to partner.")}
-        </>
-      ),
-      body: "Every slide before this is the pitch. This one is the ask. Pick the path that fits and the right team will be on the call within 48 hours.",
-      bg: {
-        kind: "image",
-        src: "/images/partner-hero.png",
-        alt: "Partnership at Mall of America",
-        overlay:
-          "bg-gradient-to-b from-[var(--color-ink)]/70 via-[var(--color-ink)]/65 to-[var(--color-ink)]/92",
-      },
     },
     {
       kind: "grid",
