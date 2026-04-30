@@ -9,6 +9,13 @@ import { GridSlide } from "./slides/GridSlide";
 import { AttractionSlide } from "./slides/AttractionSlide";
 import { TenantWallSlide } from "./slides/TenantWallSlide";
 import { CinematicSlide } from "./slides/CinematicSlide";
+import { HotspotSlide } from "./slides/HotspotSlide";
+import { GallerySlide } from "./slides/GallerySlide";
+import { ComparisonSlide } from "./slides/ComparisonSlide";
+import { VideoLightboxSlide } from "./slides/VideoLightboxSlide";
+import { TimelineSlide } from "./slides/TimelineSlide";
+import { MapSlide } from "./slides/MapSlide";
+import { ActivationBuilderSlide } from "./slides/ActivationBuilderSlide";
 
 type Props = {
   slide: Slide;
@@ -16,9 +23,15 @@ type Props = {
   slideKey: string;
   /** Called when an interactive slide finishes (e.g. cinematic ends). */
   onAdvance?: () => void;
+  /** For map slides: jump to a specific chapter. */
+  onJumpChapter?: (idx: number) => void;
 };
 
-function renderSlide(slide: Slide, onAdvance?: () => void) {
+function renderSlide(
+  slide: Slide,
+  onAdvance?: () => void,
+  onJumpChapter?: (idx: number) => void,
+) {
   switch (slide.kind) {
     case "cover":
       return <CoverSlide slide={slide} />;
@@ -34,10 +47,26 @@ function renderSlide(slide: Slide, onAdvance?: () => void) {
       return <TenantWallSlide slide={slide} />;
     case "cinematic":
       return <CinematicSlide slide={slide} onComplete={onAdvance} />;
+    case "hotspot":
+      return <HotspotSlide slide={slide} />;
+    case "gallery":
+      return <GallerySlide slide={slide} />;
+    case "comparison":
+      return <ComparisonSlide slide={slide} />;
+    case "videoLightbox":
+      return <VideoLightboxSlide slide={slide} />;
+    case "timeline":
+      return <TimelineSlide slide={slide} />;
+    case "map":
+      return (
+        <MapSlide slide={slide} onJumpChapter={onJumpChapter ?? (() => {})} />
+      );
+    case "activationBuilder":
+      return <ActivationBuilderSlide slide={slide} />;
   }
 }
 
-export function SlideStage({ slide, slideKey, onAdvance }: Props) {
+export function SlideStage({ slide, slideKey, onAdvance, onJumpChapter }: Props) {
   const reduced = useReducedMotion();
   return (
     <div className="fixed inset-0 z-0">
@@ -53,7 +82,7 @@ export function SlideStage({ slide, slideKey, onAdvance }: Props) {
           }}
           className="absolute inset-0"
         >
-          {renderSlide(slide, onAdvance)}
+          {renderSlide(slide, onAdvance, onJumpChapter)}
         </motion.div>
       </AnimatePresence>
     </div>

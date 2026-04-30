@@ -129,19 +129,19 @@ export const mall = {
       description:
         "A 60,000 sq ft creative playground — the only one in the Upper Midwest.",
       stat: "60,000 sq ft",
-      image: "/images/attractions/crayola.png",
+      image: "/images/attractions/crayola-cinematic.png",
     },
     {
       name: "The Escape Game",
       description:
         "Immersive, story-driven group adventures drawing both locals and tourists.",
-      image: "/images/attractions/escape-game.png",
+      image: "/images/attractions/escape-game-cinematic.png",
     },
     {
       name: "Mirror Maze & Smash Dance",
       description:
         "High-energy interactive venues built for content, groups, and dwell time.",
-      image: "/images/attractions/mirror-maze.png",
+      image: "/images/attractions/mirror-maze-cinematic.png",
     },
   ] satisfies Attraction[],
 
