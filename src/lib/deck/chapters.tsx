@@ -362,6 +362,15 @@ function getLuxuryCaption(brand: string): string {
   }
 }
 
+const diningImages: Record<string, string> = {
+  "Crave": "/images/dining/dining-01-crave.png",
+  "Cantina Laredo": "/images/dining/dining-02-cantinalaredo.png",
+  "Tucci Benucch": "/images/dining/dining-03-tuccibenucch.png",
+  "Twin City Grill": "/images/dining/dining-04-twincitygrill.png",
+  "FireLake Grill House": "/images/dining/dining-04-firelakegrillhouse.png",
+  "Hard Rock Cafe": "/images/dining/dining-05-hardrockcafe.png",
+};
+
 const diningChapter: Chapter = {
   id: "dining",
   index: 4,
@@ -403,6 +412,7 @@ const diningChapter: Chapter = {
           eyebrow: String(i + 1).padStart(2, "0"),
           title: name,
           body: rest.join(" — "),
+          image: diningImages[name],
         };
       }),
     },

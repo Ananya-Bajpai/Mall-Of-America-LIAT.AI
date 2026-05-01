@@ -83,9 +83,21 @@ export function GridSlide({ slide }: Props) {
                       sizes="(min-width: 768px) 25vw, 50vw"
                       className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/80 via-[var(--color-ink)]/15 to-transparent" />
-                    <div className="absolute bottom-5 left-5 right-5 font-display text-xl md:text-2xl text-[var(--color-paper)]">
-                      {card.title}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/90 via-[var(--color-ink)]/30 to-transparent" />
+                    <div className="absolute bottom-5 left-5 right-5">
+                      {card.eyebrow && (
+                        <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-[var(--color-accent)] mb-2">
+                          {card.eyebrow}
+                        </div>
+                      )}
+                      <div className="font-display text-xl md:text-2xl text-[var(--color-paper)] leading-tight">
+                        {card.title}
+                      </div>
+                      {card.body && (
+                        <p className="mt-1.5 text-xs md:text-sm text-[var(--color-paper)]/75 leading-snug">
+                          {card.body}
+                        </p>
+                      )}
                     </div>
                   </>
                 )}
