@@ -51,6 +51,7 @@ export function GridSlide({ slide }: Props) {
               ? "bg-[var(--color-ink)]/10 border-[var(--color-ink)]/10"
               : "bg-[var(--color-line)] border-[var(--color-line)]",
             columnsClass[slide.columns],
+            imageHeavy && "md:flex-1 md:min-h-0 md:auto-rows-fr",
           )}
         >
           {slide.cards.map((card, i) => {
@@ -66,7 +67,7 @@ export function GridSlide({ slide }: Props) {
                 className={cn(
                   "group relative flex flex-col transition-colors duration-500",
                   imageHeavy
-                    ? "aspect-[4/3] overflow-hidden"
+                    ? "aspect-[4/3] overflow-hidden md:aspect-auto md:h-full md:min-h-0"
                     : "p-6 lg:p-8",
                   isLightTone
                     ? "bg-[var(--color-paper)] text-[var(--color-ink)]"
