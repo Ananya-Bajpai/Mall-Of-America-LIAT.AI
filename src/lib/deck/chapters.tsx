@@ -647,7 +647,7 @@ const activationChapter: Chapter = {
           alt: "FlyOver Theater pre-show screen with logo placeholder",
           name: "FlyOver Theater · Pre-Show Screen",
           zone: { x: 28, y: 28, width: 44, height: 32 },
-          blendMode: "screen",
+          blendMode: "multiply",
           reach: "~1.1M annual eyeballs",
           comp: "Custom flight · IMAX-grade screen",
           leadTime: "45 days",

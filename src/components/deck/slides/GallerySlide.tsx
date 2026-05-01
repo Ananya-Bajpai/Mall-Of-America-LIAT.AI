@@ -38,13 +38,13 @@ export function GallerySlide({ slide }: Props) {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[3fr_1fr]">
+        <div className="grid flex-1 min-h-0 grid-cols-1 gap-8 md:grid-cols-[3fr_1fr]">
           {/* Main image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease, delay: 0.35 }}
-            className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-[var(--color-line)] bg-[var(--color-ink)]"
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-[var(--color-line)] bg-[var(--color-ink)] md:aspect-auto md:h-full"
           >
             <AnimatePresence mode="wait">
               <motion.div

@@ -97,36 +97,20 @@ export function ActivationBuilderSlide({ slide }: Props) {
               <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--color-paper)]/55 mb-2">
                 01 · Pick your path
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="grid grid-cols-3 gap-1.5">
                 {(Object.keys(PATH_LABELS) as ActivationPath[]).map((p) => (
                   <button
                     key={p}
                     type="button"
                     onClick={() => setPath(p)}
                     className={cn(
-                      "group flex items-center justify-between gap-3 rounded-sm border px-4 py-2.5 text-left transition-all",
+                      "rounded-sm border px-3 py-2 text-center font-display text-xs md:text-sm leading-tight transition-all",
                       path === p
                         ? "border-[var(--color-accent)] bg-[var(--color-accent)]/8 text-[var(--color-paper)]"
                         : "border-[var(--color-line)] text-[var(--color-paper)]/75 hover:border-[var(--color-paper)]/40",
                     )}
                   >
-                    <div>
-                      <div className="font-display text-base md:text-lg leading-tight">
-                        {PATH_LABELS[p].label}
-                      </div>
-                      <div className="mt-0.5 text-[10px] tracking-[0.2em] uppercase text-[var(--color-paper)]/55">
-                        {PATH_LABELS[p].kicker}
-                      </div>
-                    </div>
-                    <ArrowRight
-                      size={16}
-                      className={cn(
-                        "transition-transform",
-                        path === p
-                          ? "text-[var(--color-accent)] translate-x-0.5"
-                          : "opacity-0 group-hover:opacity-100",
-                      )}
-                    />
+                    {PATH_LABELS[p].label}
                   </button>
                 ))}
               </div>
